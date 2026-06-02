@@ -155,13 +155,33 @@ export default function Login({
               setLocalErr(null);
               onClearError();
             }}
-            className="text-xs font-medium text-brand-primary hover:underline focus:outline-none"
+            className="text-xs font-medium text-brand-primary hover:underline focus:outline-none block w-full text-center mb-4"
           >
             {isRegister 
               ? 'Already registered? Log in here' 
               : 'Need an account? Sign up here as subcontractor'
             }
           </button>
+
+          <div className="p-4 rounded-xl border border-brand-primary/20 bg-brand-primary/5 text-center mt-2 animate-fade-in" id="demo-account-container">
+            <p className="text-xs text-brand-text mb-2 font-medium">
+              Want to see preloaded compliance drafts?
+            </p>
+            <button
+              id="login-btn-demo"
+              type="button"
+              onClick={() => {
+                onSubmitAuth("demo@asnzs.com.au", "demo123", false);
+              }}
+              className="w-full py-2.5 px-3 bg-brand-primary text-white hover:opacity-95 font-bold rounded-lg text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm"
+            >
+              <Zap className="w-3.5 h-3.5 filter drop-shadow" />
+              Check demo account for 3 proposals
+            </button>
+            <p className="text-[10px] text-brand-muted mt-1.5 leading-tight">
+              Instant bypass login with Proposal #1: Switchboard, Proposal #2: Solar, & Proposal #3: Lighting pre-configured.
+            </p>
+          </div>
         </div>
       </div>
     </div>

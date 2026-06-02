@@ -454,21 +454,28 @@ export default function App() {
 
   if (!session.isAuthenticated) {
     return (
-      <div className="bg-brand-bg transition-colors duration-150 min-h-screen">
-        <header className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center bg-transparent">
-          <div className="flex items-center gap-2">
-            <Zap className="w-5 h-5 text-brand-primary" />
-            <span className="font-bold tracking-tight text-brand-text text-sm">ELECTRICAL ESTIMATE WORKFLOW</span>
+      <div className="bg-brand-bg transition-colors duration-150 min-h-screen flex flex-col justify-between">
+        <div>
+          <header className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center bg-transparent">
+            <div className="flex items-center gap-2">
+              <Zap className="w-5 h-5 text-brand-primary" />
+              <span className="font-bold tracking-tight text-brand-text text-sm">ELECTRICAL ESTIMATE WORKFLOW</span>
+            </div>
+            <ThemeToggle currentTheme={theme} onChangeTheme={setTheme} />
+          </header>
+          <Login 
+            onLoginSuccess={setSession}
+            isLoading={apiLoading}
+            errorMsg={authError}
+            onClearError={() => setAuthError(null)}
+            onSubmitAuth={handleAuthSubmit}
+          />
+        </div>
+        <footer className="max-w-7xl mx-auto px-6 py-8 border-t border-brand-border mt-12 text-center" id="app-footer-login">
+          <div className="flex flex-col md:flex-row gap-4 justify-between items-center text-[11px] text-brand-muted justify-center">
+            <p className="w-full text-center">© 2026 Electrical Estimate Generator — Built for Australian electrical contractors</p>
           </div>
-          <ThemeToggle currentTheme={theme} onChangeTheme={setTheme} />
-        </header>
-        <Login 
-          onLoginSuccess={setSession}
-          isLoading={apiLoading}
-          errorMsg={authError}
-          onClearError={() => setAuthError(null)}
-          onSubmitAuth={handleAuthSubmit}
-        />
+        </footer>
       </div>
     );
   }
@@ -803,11 +810,8 @@ export default function App() {
 
       {/* FOOTER */}
       <footer className="max-w-7xl mx-auto px-6 py-8 border-t border-brand-border mt-12 text-center" id="app-footer">
-        <div className="flex flex-col md:flex-row gap-4 justify-between items-center text-[11px] text-brand-muted">
-          <p>© 2026 Electrical Estimate Generator — Compliant with AS/NZS Rules.</p>
-          <div className="flex gap-4">
-            <a href="/docs" target="_blank" className="hover:text-brand-text underline text-brand-primary font-semibold">FastAPI Backend API Documentation at docs</a>
-          </div>
+        <div className="flex flex-col md:flex-row gap-4 justify-between items-center text-[11px] text-brand-muted justify-center">
+          <p className="w-full text-center">© 2026 Electrical Estimate Generator — Built for Australian electrical contractors</p>
         </div>
       </footer>
 

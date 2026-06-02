@@ -28,15 +28,185 @@ interface DBStructure {
   }>;
 }
 
-if (!fs.existsSync(DB_FILE)) {
-  fs.writeFileSync(DB_FILE, JSON.stringify({ users: {}, proposals: [] }, null, 2));
+function getSeedProposals() {
+  return [
+    {
+      id: 100001,
+      user_email: "demo@asnzs.com.au",
+      client_name: "Apex Manufacturing Solutions",
+      job_type: "Commercial Switchboard Upgrade",
+      site_address: "12-14 Industrial Parkway, Altona VIC 3018",
+      created_at: new Date().toISOString(),
+      form_data: {
+        clientName: "Apex Manufacturing Solutions",
+        siteAddress: "12-14 Industrial Parkway, Altona VIC 3018",
+        jobReference: "JOB-774A-2026",
+        jobType: "Commercial Switchboard Upgrade",
+        primaryMaterials: "250A Main Switchboard, Schneider 3-Phase chassis, NHP circuit breakers, 35mm² XLPE copper submain cables, surge protection device (SPD).",
+        standardsCompliance: "Compliance with AS/NZS 3000:2018 is mandatory. Clauses 2.5 (Control and protection), 3.4 (Current-carrying capacity) were carefully verified.",
+        estimatedHours: "36",
+        crewSize: "3",
+        priceEstimate: "$14,850.00 AUD",
+        accessRequirements: "Dual-height scaffolding, hazard area isolation, safety clearance permit.",
+        shutdownNeeded: "Yes - scheduled Sunday site isolation from 06:00 to 18:00 to prevent plant disruption.",
+        siteHazards: "High-voltage main incoming feeder proximate to line of work, dust from paint workshop."
+      },
+      generated_content: `# 📄 PROPOSAL: Apex Manufacturing Solutions - Commercial Switchboard Upgrade
+
+## 🔍 Executive Summary
+A comprehensive upgrade of the main commercial switchboard at the Altona facility to resolve safety vulnerabilities and provide high-capacity overhead safety.
+
+## 📐 Scope of Works & AS/NZS 3000:2018 Code Compliance
+- **Subcircuit Isolation**: Complete isolation of the primary subcircuits under Clause 1.5 of the standard.
+- **Switchboard Enclosure**: Deployment of a heavy-duty IP56-rated metal enclosure with a dedicated lockable security visor.
+- **Safety Switch Compliance**: Upgrading all auxiliary GPO circuits with 30mA RCBOs (Residual Current Circuit Breakers with Overcurrent protection) per Clause 2.6.2.2.
+- **Sub-main Upgrade**: Rerouting submains with high-temperature XLPE 35mm² cables through galvanized steel conduits.
+
+## 📦 Materials and Accessories
+- **Main Switchboard**: Schneider 250A distribution board with integrated chassis.
+- **Protection**: NHP circuit breakers & Type 2 Surge Protection Devices.
+- **Cables**: 35mm² XLPE insulated orange circular copper cabling.
+
+## ⏱ Crew & Labor Breakdown
+- **Personnel**: 3 licensed A-grade electricians.
+- **Work Duration**: 36 hours total (spread across 3 shifts, including Sunday shutdown).
+
+## 🛡 Exclusions & Safety Control
+- Scheduled Sunday outage requested from 06:00 to 18:00.
+- Standard high-voltage approach boundaries will be strictly enforced at the factory entry point.`
+    },
+    {
+      id: 100002,
+      user_email: "demo@asnzs.com.au",
+      client_name: "Brighton Coastal Estate",
+      job_type: "Commercial Solar Installation (30kW)",
+      site_address: "33-35 Marine Parade, Brighton QLD 4017",
+      created_at: new Date().toISOString(),
+      form_data: {
+        clientName: "Brighton Coastal Estate",
+        siteAddress: "33-35 Marine Parade, Brighton QLD 4017",
+        jobReference: "JOB-899S-2026",
+        jobType: "Commercial Solar Installation (30kW)",
+        primaryMaterials: "68x Jinko 440W N-type panels, Fronius Symo 30kW inverter, Clenergy solar roof mounting, DC isolating switches (AS/NZS 5033 compliant), 6mm² twin PV cable.",
+        standardsCompliance: "Fully compliant with AS/NZS 3000:2018, AS/NZS 5033 (PV Arrays), and AS/NZS 4777 (Inverter installation).",
+        estimatedHours: "24",
+        crewSize: "2",
+        priceEstimate: "$22,400.00 AUD",
+        accessRequirements: "Roof harness anchor points, EWP boom lift for heavy equipment elevation.",
+        shutdownNeeded: "No - isolated string-level installation with minor grid-connect momentary outage.",
+        siteHazards: "Working at heights, high UV exposure, coastal wind corridors."
+      },
+      generated_content: `# 📄 PROPOSAL: Brighton Coastal Estate - 30kW Commercial Solar
+
+## 🔍 Executive Summary
+Implementation of an efficient commercial solar arrays grid-connect system to reduce operating power overheads while matching strict coastal wind and electrical standard rules.
+
+## 📐 Scope of Works & Standards Compliance
+- **Solar Module Alignment**: Grid placement of high-efficiency N-type solar modules to maximize irradiance harvesting.
+- **AS/NZS 5033 Subclause Compliance**: Standardized DC fire isolation switches placed locally at the array boundaries.
+- **AS/NZS 4777 Inverter Integration**: Wall mounting the Fronius inverter with active ventilation and heat shielding.
+- **Grid Protection**: Compliant integration of secondary utility grid relays and anti-islanding parameters.
+
+## 📦 Materials and Accessories
+- **Panels**: 68x Jinko Solar N-Type Monocrystalline Photovoltaic panels.
+- **Inverter**: 1x Fronius Symo 3-Phase 30kW Smart Inverter with analytics portal.
+- **Isolators & Clamps**: Clenergy high-wind roof rail system with anodized brackets.
+
+## ⏱ Crew & Labor Breakdown
+- **Personnel**: 2 Solar energy certified electrical technicians.
+- **Work Duration**: 24 hours total across 3 consecutive work days.
+
+## 🛡 Environmental Risks & Exclusions
+- Working at heights permits verified. Fall arrest harnesses and static lines are mandatory for roof work.
+- Involves standard solar commissioning protocols and utility grid connection approvals.`
+    },
+    {
+      id: 100003,
+      user_email: "demo@asnzs.com.au",
+      client_name: "Logistics Hub West",
+      job_type: "Warehouse Lighting Upgrade",
+      site_address: "88 Boundary Road, Truganina VIC 3029",
+      created_at: new Date().toISOString(),
+      form_data: {
+        clientName: "Logistics Hub West",
+        siteAddress: "88 Boundary Road, Truganina VIC 3029",
+        jobReference: "JOB-412L-2026",
+        jobType: "Warehouse Lighting Upgrade",
+        primaryMaterials: "120x Philips GreenUp 150W LED Highbays, intelligent motion daylight sensors, steel wire suspension chains, 1.5mm² TPS cabling, Clipsal heavy-duty junction boxes.",
+        standardsCompliance: "Compliant with AS/NZS 3000 (Wiring Rules) and AS/NZS 1680 (Interior and workplace lighting standards).",
+        estimatedHours: "48",
+        crewSize: "2",
+        priceEstimate: "$18,250.00 AUD",
+        accessRequirements: "10m Scissor lift, dynamic exclusion zoning during night shift work.",
+        shutdownNeeded: "No - works staged over multiple zones outside operating hours.",
+        siteHazards: "Forklift traffic, height work, dust accumulation on high trusses."
+      },
+      generated_content: `# 📄 PROPOSAL: Logistics Hub West - Warehouse Lighting Upgrade
+
+## 🔍 Executive Summary
+Retrofitting highbays to high-efficiency LED chips which secures substantial power reduction alongside premium light dispersion inside active logistics spaces.
+
+## 📐 Scope of Works & AS/NZS 1680 compliance
+- **Retrofit highbays**: Dismantling outdated mercury vapor fixtures and retrofitting suspended high-performance LEDs.
+- **AS/NZS 1680.1 Conformance**: Lighting lux mapping verified to guarantee uniform bright visual fields (150 Lux minimum in active loading bays).
+- **Control integration**: Calibrating motion and dusk to down daylight sensors to dim rows when unoccupied.
+- **Supply Cable Runs**: Continuous TPS copper loop cabling using heavy duty Clipsal surface mount junction boxes.
+
+## 📦 Materials and Accessories
+- **Luminaires**: 120x Philips GreenUp IP65 150W industrial LEDs.
+- **Sensors**: Philips SmartMotion microwave sensors.
+- **Cabling & Anchors**: Steel high-tensile wire rope and 1.5mm² flat orange TPS.
+
+## ⏱ Crew & Labor Breakdown
+- **Personnel**: 2 scissor-lift trained industrial electricians.
+- **Work Duration**: 48 hours total (completed during graveyard shifts over 6 nights).
+
+## 🛡 Operational Hazards
+- scissor-lift exclusion fences and warning signs to separate forklift drivers.
+- Site cleanup of all discarded mercury fixtures per local hazardous chemical disposal laws.`
+    }
+  ];
 }
 
 function readDB(): DBStructure {
   try {
-    return JSON.parse(fs.readFileSync(DB_FILE, "utf-8"));
+    const data = JSON.parse(fs.readFileSync(DB_FILE, "utf-8"));
+    let updated = false;
+    if (!data.users) {
+      data.users = {};
+      updated = true;
+    }
+    if (!data.proposals) {
+      data.proposals = [];
+      updated = true;
+    }
+
+    if (!data.users["demo@asnzs.com.au"]) {
+      data.users["demo@asnzs.com.au"] = "demo123";
+      updated = true;
+    }
+
+    const demoProposals = data.proposals.filter((p: any) => p.user_email === "demo@asnzs.com.au");
+    if (demoProposals.length < 3) {
+      // Clear out and re-inject standard 3 proposals to make sure they are exact
+      data.proposals = data.proposals.filter((p: any) => p.user_email !== "demo@asnzs.com.au");
+      data.proposals.push(...getSeedProposals());
+      updated = true;
+    }
+
+    if (updated) {
+      fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
+    }
+    return data;
   } catch (e) {
-    return { users: {}, proposals: [] };
+    const defaultData = {
+      users: { "demo@asnzs.com.au": "demo123" },
+      proposals: getSeedProposals()
+    };
+    try {
+      fs.writeFileSync(DB_FILE, JSON.stringify(defaultData, null, 2));
+    } catch (writeErr) {}
+    return defaultData;
   }
 }
 
@@ -614,7 +784,7 @@ async function startServer() {
     });
   }
 
- // ============================================
+// ============================================
 // PORT CONFIGURATION FOR HUGGING FACE SPACES
 // ============================================
 // Hugging Face Spaces requires port 7860
@@ -629,8 +799,10 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
   console.log(`🔑 Gemini API: ${process.env.GEMINI_API_KEY ? '✅ Configured' : '❌ Not configured'}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`⚡ Server running on http://localhost:${PORT}`);
   console.log(`========================================`);
 });
 }
 
 startServer();
+
