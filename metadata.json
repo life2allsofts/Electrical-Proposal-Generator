@@ -1,0 +1,6 @@
+{
+  "name": "Electrical Proposal Generator",
+  "description": "AI-powered electrical proposal generator with customizable prompts, color themes, user auth, and PDF/DOCX downloads.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

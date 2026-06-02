@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  
+  --color-brand-bg: var(--bg-color);
+  --color-brand-card: var(--card-color);
+  --color-brand-text: var(--text-color);
+  --color-brand-muted: var(--muted-color);
+  --color-brand-primary: var(--primary-color);
+  --color-brand-border: var(--border-color);
+}
+
+:root {
+  /* Default/Light Slate Theme */
+  --bg-color: #f8fafc;
+  --card-color: #ffffff;
+  --text-color: #0f172a;
+  --muted-color: #64748b;
+  --primary-color: #2563eb;
+  --border-color: #e2e8f0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Dark Mode */
+.theme-dark {
+  --bg-color: #0f172a;
+  --card-color: #1e293b;
+  --text-color: #f8fafc;
+  --muted-color: #94a3b8;
+  --primary-color: #06b6d4;
+  --border-color: #334155;
+}
+
+/* Electrical Spark Blue */
+.theme-electrical-blue {
+  --bg-color: #090e1a;
+  --card-color: #111a2f;
+  --text-color: #f1f5f9;
+  --muted-color: #cbd5e1;
+  --primary-color: #fbbf24;
+  --border-color: #1e293b;
+}
+
+/* High Contrast Accessibility Theme */
+.theme-high-contrast {
+  --bg-color: #000000;
+  --card-color: #000000;
+  --text-color: #ffffff;
+  --muted-color: #a3a3a3;
+  --primary-color: #ffffff;
+  --border-color: #ffffff;
+}
+
+/* Standard scrollbars with theme support */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}

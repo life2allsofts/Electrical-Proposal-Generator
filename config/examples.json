@@ -1,0 +1,7 @@
+[
+  {
+    "category": "Main Switchboard Upgrade (AS/NZS 3000)",
+    "description": "Example of switchboard remediation and compliance bringing vintage installations to AS/NZS 3000:2018 standards",
+    "sample": "# Main Switchboard Remediation\n\n## Scope\n- Complete isolation and tagging out of the existing residential/commercial mains\n- Removal of asbestos-backing panel board and redundant ceramic fuse holders\n- Supply and installation of a surface-mount 24-way metal enclosure\n- Installation of NHP RCBO circuit breakers for all final subcircuits\n- Re-testing of earth continuity and insulation resistance prior to re-energisation\n\n## Compliance\n- All works executed in absolute conformity with AS/NZS 3000:2018 (Wiring Rules)\n- Electrical Safety Certificate provided upon completion"
+  }
+]
