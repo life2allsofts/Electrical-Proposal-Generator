@@ -614,8 +614,22 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-  console.log(`⚡ Server running on http://0.0.0.0:${PORT}`);
+ // ============================================
+// PORT CONFIGURATION FOR HUGGING FACE SPACES
+// ============================================
+// Hugging Face Spaces requires port 7860
+// Convert string to number with proper fallback
+const PORT: number = parseInt(process.env.PORT || '7860', 10);
+
+// Start server - MUST bind to 0.0.0.0
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`========================================`);
+  console.log(`⚡ Electrical Proposal Generator`);
+  console.log(`========================================`);
+  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
+  console.log(`🔑 Gemini API: ${process.env.GEMINI_API_KEY ? '✅ Configured' : '❌ Not configured'}`);
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`========================================`);
 });
 }
 
